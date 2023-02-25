@@ -1,0 +1,13 @@
+Bubble sort
+Selection sort
+Insertion sort
+-------------------
+Linear search
+Binary search
+-------------------
+Counting sort
+Array mapping function(AMF)
+Quick sort (limitation handling ofquick sort)
+-------------------
+Linked list
+
