@@ -1,6 +1,7 @@
 Bubble sort
 Selection sort
 Insertion sort
+Count sort
 -------------------
 Linear search
 Binary search
