@@ -82,6 +82,7 @@ void insertAtPosition(Node* &head,Node* &tail,int position,int d){
     temp->next=nodeToInsert;
     nodeToInsert->prev=temp;
 }
+
 /*** Delete element ***/
 void deleteNode(int position,Node* &head){
     // first position

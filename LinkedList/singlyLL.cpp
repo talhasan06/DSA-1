@@ -32,7 +32,7 @@ void insertAtTail(Node* &tail,int d){
 }
 void insertAtPosition(Node* &head,Node* &tail,int position,int d){
     // insert start
-    if(position==1){
+    if(position==1){ 
         insertAtHead(head,d);
         return;
     }
@@ -52,6 +52,32 @@ void insertAtPosition(Node* &head,Node* &tail,int position,int d){
     nodeToInsert->next=temp->next;
     temp->next=nodeToInsert;
 }
+// reverse
+void reverseList(Node* &head){
+    Node* curr=head;
+    Node* prev=NULL;
+    while(curr){
+        Node* next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+    }
+    head=prev;
+}
+// remove duplicate
+void removeDuplicate(Node* &head){
+    Node* temp=head;
+    if(!temp) cout<<"NULL"<<endl;
+    while (temp->next!=NULL)
+    {
+        if(temp->data==temp->next->data){
+            temp->next=temp->next->next;
+        }else{
+            temp=temp->next;
+        }
+    }
+    
+}
 /*** Delete element ***/
 void deleteNode(int position,Node* &head){
     // first position
@@ -60,22 +86,27 @@ void deleteNode(int position,Node* &head){
         head=head->next;
         temp->next=NULL;
         delete temp;
+        return;
     }else{
-        //delete any middle node or last node
+        //delete any position
         Node* curr=head;
         Node* prev=NULL;
-        int cnt=1;
-        while(cnt<=position){
+        int pos=1;
+        while(pos<=position){
             prev=curr;
             curr=curr->next;
-            cnt++;
+            pos++;
+        }
+        // last position
+        if(curr->next==NULL){
+            prev->next=curr->next;
+            delete curr;
+            return;
         }
         prev->next=curr->next;
         curr->next=NULL;
         delete curr;
     }
-    // last position
-    /*coding missing*/
 }
 void print(Node* &head){
     Node* temp=head;
@@ -108,12 +139,17 @@ int main() {
     insertAtTail(tail,12);
     // print(head);
     insertAtTail(tail,15);
+    insertAtTail(tail,5);
     // print(head);
     // if we add value in first positon we don't have any previous value
     insertAtPosition(head,tail,4,5);
     // insertAtPosition(head,3,22);
+    // print(head);
+    // deleteNode(2,head);
+    // print(head);
     print(head);
-    deleteNode(2,head);
+    removeDuplicate(head);
+    // reverseList(head);
     print(head);
     return 0;
 }
